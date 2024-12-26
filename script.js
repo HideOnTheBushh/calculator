@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let a;
     let b;
     let operator;
+    let isOperator = false;
     const display = document.querySelector(".display");
 
     document.querySelector("#clear").addEventListener("click", () => {
@@ -11,16 +12,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll(".number").forEach(number => {
         number.addEventListener("click",() => {
-            if (display.textContent == "0") {
+            if (display.textContent == "0" || isOperator) {
                 display.textContent = "";
+                isOperator = false;
+
             }
             display.textContent += number.id;
         })
     })
 
-    document.querySelectorAll(".operator").forEach(operator => {
-        operator.addEventListener("click", () => {
-            operator = operator.id;
+    document.querySelectorAll(".operator").forEach(button => {
+        button.addEventListener("click", () => {
+            a = display.textContent;
+            operator = button.id;
+            isOperator = true;
+            console.log(operator);
         })
     })
 })
