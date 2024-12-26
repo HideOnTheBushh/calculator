@@ -2,25 +2,39 @@ document.addEventListener("DOMContentLoaded", () => {
     // First number, second number and operator between them
     let a;
     let b;
-    let operator;
+    let operator = "";
     let isOperator = false;
+    let isEqual = false;
     const display = document.querySelector(".display");
 
+    // Clears the display
     document.querySelector(".clear").addEventListener("click", () => {
         display.textContent = "0";
     })
 
     document.querySelectorAll(".number").forEach(number => {
         number.addEventListener("click",() => {
-            if (display.textContent == "0" || isOperator) {
+            // Check for leading zeros
+            if (display.textContent == "0") {
                 display.textContent = "";
                 isOperator = false;
-
+            } 
+            // Check if equal sign was pressed
+            else if (isEqual) {
+                display.textContent = "";
+                isEqual = false;
             }
+            // Check if operator sign was pressed
+            else if (isOperator) {
+                display.textContent = "";
+                isOperator = false;
+            }
+            // Add number to display
             display.textContent += number.id;
         })
     })
 
+    // Save operator if clicked
     document.querySelectorAll(".operator").forEach(button => {
         button.addEventListener("click", () => {
             a = display.textContent;
@@ -29,7 +43,14 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     })
 
-    
+    // Show the solution
+    document.querySelector(".equal").addEventListener("click", () => {
+        if (operator !== "") {
+            b = display.textContent;
+            display.textContent = operate(Number(a), operator, Number(b));
+            isEqual = true;
+        }
+    })
 })
 
 
