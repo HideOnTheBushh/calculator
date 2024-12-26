@@ -10,6 +10,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Clears the display
     document.querySelector(".clear").addEventListener("click", () => {
         display.textContent = "0";
+        a = 0;
+        b = 0;
+        let isOperator = false;
+        let isEqual = false;
+        let operator = "";
     })
 
     document.querySelectorAll(".number").forEach(number => {
@@ -17,15 +22,14 @@ document.addEventListener("DOMContentLoaded", () => {
             // Check for leading zeros
             if (display.textContent == "0") {
                 display.textContent = "";
-                isOperator = false;
             } 
             // Check if equal sign was pressed
-            else if (isEqual) {
+            if (isEqual) {
                 display.textContent = "";
                 isEqual = false;
             }
             // Check if operator sign was pressed
-            else if (isOperator) {
+            if (isOperator) {
                 display.textContent = "";
                 isOperator = false;
             }
@@ -39,7 +43,11 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener("click", () => {
             if (operator !== "") {
                 b = display.textContent;
-                display.textContent = operate(Number(a), operator, Number(b));
+                if (b != 0) {
+                    display.textContent = Math.round(operate(Number(a), operator, Number(b)) * 100) / 100;
+                } else {
+                    display.textContent = operate(Number(a), operator, Number(b));
+                }
             }
             a = display.textContent;
             operator = button.id;
@@ -51,10 +59,17 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".equal").addEventListener("click", () => {
         if (operator !== "") {
             b = display.textContent;
-            display.textContent = operate(Number(a), operator, Number(b));
+            // Save check against dividing by zero
+            if (b != 0) {
+                display.textContent = Math.round(operate(Number(a), operator, Number(b)) * 100) / 100;
+            } else {
+                display.textContent = operate(Number(a), operator, Number(b));
+            }
+            // Reset
             isEqual = true;
             a = 0;
             b = 0;
+            operator = "";
         }
     })
 })
