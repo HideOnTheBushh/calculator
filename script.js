@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let isOperator = false;
     const display = document.querySelector(".display");
 
-    document.querySelector("#clear").addEventListener("click", () => {
+    document.querySelector(".clear").addEventListener("click", () => {
         display.textContent = "0";
     })
 
@@ -26,9 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
             a = display.textContent;
             operator = button.id;
             isOperator = true;
-            console.log(operator);
         })
     })
+
+    
 })
 
 
