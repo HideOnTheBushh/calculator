@@ -41,10 +41,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Save operator if clicked
     document.querySelectorAll(".operator").forEach(button => {
         button.addEventListener("click", () => {
-            if (operator !== "") {
+
+            // Save check against dividing by zero
+            if (operator !== "" && !isOperator) {
                 b = display.textContent;
                 if (b != 0) {
-                    display.textContent = Math.round(operate(Number(a), operator, Number(b)) * 100) / 100;
+                    display.textContent = Math.round(operate(Number(a), operator, Number(b)) * 1000) / 1000;
                 } else {
                     display.textContent = operate(Number(a), operator, Number(b));
                 }
@@ -57,11 +59,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Show the solution
     document.querySelector(".equal").addEventListener("click", () => {
-        if (operator !== "") {
+        if (operator !== "" && !isOperator) {
             b = display.textContent;
             // Save check against dividing by zero
             if (b != 0) {
-                display.textContent = Math.round(operate(Number(a), operator, Number(b)) * 100) / 100;
+                display.textContent = Math.round(operate(Number(a), operator, Number(b)) * 1000) / 1000;
             } else {
                 display.textContent = operate(Number(a), operator, Number(b));
             }
