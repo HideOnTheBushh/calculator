@@ -37,6 +37,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Save operator if clicked
     document.querySelectorAll(".operator").forEach(button => {
         button.addEventListener("click", () => {
+            if (operator !== "") {
+                b = display.textContent;
+                display.textContent = operate(Number(a), operator, Number(b));
+            }
             a = display.textContent;
             operator = button.id;
             isOperator = true;
@@ -49,6 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
             b = display.textContent;
             display.textContent = operate(Number(a), operator, Number(b));
             isEqual = true;
+            a = 0;
+            b = 0;
         }
     })
 })
