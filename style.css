@@ -24,9 +24,15 @@ body {
 
 .display {
     flex: auto;
-    flex-grow: 2;
+    flex-grow: 0;
     border-bottom: 2px solid black;
     background-color: #97a3ac;
+    font-size: 8vw;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-right: 3px;
+    overflow: hidden;
 }
 
 .row {
@@ -43,7 +49,8 @@ button {
     font-weight: 600;
 }
 
-.number {
+.number,
+.dot {
     background-color: antiquewhite;
 }
 

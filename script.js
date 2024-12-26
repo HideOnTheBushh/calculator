@@ -3,6 +3,26 @@ document.addEventListener("DOMContentLoaded", () => {
     let a;
     let b;
     let operator;
+    const display = document.querySelector(".display");
+
+    document.querySelector("#clear").addEventListener("click", () => {
+        display.textContent = "0";
+    })
+
+    document.querySelectorAll(".number").forEach(number => {
+        number.addEventListener("click",() => {
+            if (display.textContent == "0") {
+                display.textContent = "";
+            }
+            display.textContent += number.id;
+        })
+    })
+
+    document.querySelectorAll(".operator").forEach(operator => {
+        operator.addEventListener("click", () => {
+            operator = operator.id;
+        })
+    })
 })
 
 
@@ -16,7 +36,7 @@ function operate (a, operator, b) {
         return add(a, b);
     } else if (operator === "-") {
         return subtract(a, b);
-    } else if (operator === "*") {
+    } else if (operator === "x") {
         return multiply(a, b);
     } else if (operator === "/") {
         return divide(a, b);
