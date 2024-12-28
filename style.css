@@ -59,6 +59,10 @@ button {
     background-color: #c5b63a;
 }
 
-#clear {
+.clear {
     background-color: #e51720;
+}
+
+.backspace {
+    background-color: #2f6a37;
 }
