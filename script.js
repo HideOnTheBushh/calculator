@@ -7,14 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let isEqual = false;
     const display = document.querySelector(".display");
 
-    
+
     // Clears the display
-    document.querySelector(".clear").addEventListener("click", () => {
-        clear();
-    })
+    document.querySelector(".clear").addEventListener("click", clear)
 
     document.querySelectorAll(".number").forEach(number => {
-        number.addEventListener("click",() => {
+        number.addEventListener("click", () => {
             AddNumber(number);
         })
     })
@@ -27,20 +25,17 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     // Equal sign pressed
-    document.querySelector(".equal").addEventListener("click", () => {
-        equalize();
-    })
+    document.querySelector(".equal").addEventListener("click", equalize)
 
     // Using dot to type decimal numbers
-    document.querySelector(".dot").addEventListener("click", () => {
-        addDot();
-    })
+    document.querySelector(".dot").addEventListener("click", addDot)
 
     // Remove the last character
-    document.querySelector(".backspace").addEventListener("click", () => {
-        removeLast();
-    })
+    document.querySelector(".backspace").addEventListener("click", removeLast)
 
+
+    // Handle keyboards events
+    //document.addEventListener("keaydown", )
 
 
 
