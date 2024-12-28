@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // Handle keyboards events
-    //document.addEventListener("keaydown", )
+    document.addEventListener("keydown", handleKeyboardEvents)
 
 
 
@@ -134,6 +134,41 @@ document.addEventListener("DOMContentLoaded", () => {
             display.textContent = "0";
         }
     }
+
+
+    // Keyboard works aswell
+    function handleKeyboardEvents (event) {
+        
+        // Delete button for Clear
+        if (event.key == "Delete") {
+            clear();
+        }
+
+        // Numbers
+        if (event.key >= "0" && event.key <= "9") {
+            document.getElementById(event.key).click();
+        }
+
+        // Operators
+        if (event.key == "+" || event.key == "-" || event.key == "*" || event.key == "/") {
+            document.getElementById(event.key).click();
+        }
+
+        // Equal
+        if (event.key == "=") {
+            equalize();
+        }
+
+        // Dot
+        if (event.key == ".") {
+            addDot();
+        }
+
+        // Backspace
+        if (event.key == "Backspace") {
+            removeLast();
+        }
+    }
 })
 
 
@@ -147,7 +182,7 @@ function operate (a, operator, b) {
         return add(a, b);
     } else if (operator === "-") {
         return subtract(a, b);
-    } else if (operator === "x") {
+    } else if (operator === "*") {
         return multiply(a, b);
     } else if (operator === "/") {
         return divide(a, b);
