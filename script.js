@@ -74,6 +74,20 @@ document.addEventListener("DOMContentLoaded", () => {
             operator = "";
         }
     })
+
+    // Using dot to type decimal numbers
+    document.querySelector(".dot").addEventListener("click", () => {
+
+        // Allow ty type dot only if not on screen
+        if (!display.textContent.includes('.') || isOperator) {
+            // If operator pressed, new line
+            if (isOperator) {
+                display.textContent = "0";
+                isOperator = false;
+            }
+            display.textContent += ".";
+        }
+    })
 })
 
 
